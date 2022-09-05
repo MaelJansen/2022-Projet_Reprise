@@ -21,7 +21,24 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         Fichier f = new Fichier(file);
         // dimensions
         largeur=f.lireNombre(); 
-        hauteur=f.lireNombre(); 
+        hauteur=f.lireNombre();
+        // les coordonnées
+        int x = f.lireNombre();
+        int y = f.lireNombre();
+        // on récupère l'entrée et la sortie
+        entree = new Salle(x, y);
+        this.add(entree);
+        x = f.lireNombre();
+        y = f.lireNombre();
+        sortie = new Salle(x,y);
+        this.add(sortie);
+        // on récuère les autres salles
+        while(x != -1){
+            x = f.lireNombre();
+            y = f.lireNombre();
+            Salle s = new Salle(x,y);
+            this.add(s);
+        }
         // ...
     }
 
@@ -54,6 +71,5 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
     public int getHauteur() {
         return hauteur;
     }
-
 }
 

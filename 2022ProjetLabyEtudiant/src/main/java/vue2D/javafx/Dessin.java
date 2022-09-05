@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import labyrinthe.ILabyrinthe;
+import labyrinthe.ISalle;
 import vue2D.sprites.ISprite;
 
 /**
@@ -19,6 +20,7 @@ public class Dessin extends Canvas {
     private int unite = 15;
     private GraphicsContext tampon;
     private Image solImage;
+    private Image mur;
    
     public Dessin(ILabyrinthe labyrinthe, Collection<ISprite> sprites)
     {
@@ -28,7 +30,8 @@ public class Dessin extends Canvas {
         setHeight(labyrinthe.getHauteur()*unite);
         tampon = this.getGraphicsContext2D();
         chargementImages();
-        dessinFond(); 
+        dessinFond();
+        dessinLab();
     }
     
      public void chargementImages(){
@@ -38,6 +41,18 @@ public class Dessin extends Canvas {
     public void dessinFond(){
         tampon.drawImage(solImage,0,0,unite*labyrinthe.getLargeur(),
                 unite*labyrinthe.getHauteur());
+    }
+    
+    public void dessinLab(){
+        int x;
+        int y;
+        mur = new Image("file:icons/mur0.gif");
+        // on dessine toutes les salles
+        for (ISalle s : labyrinthe){
+            x = s.getX();
+            y = s.getY();
+            tampon.drawImage(mur,x*unite,y*unite,unite,unite);
+        }
     }
 
 }
