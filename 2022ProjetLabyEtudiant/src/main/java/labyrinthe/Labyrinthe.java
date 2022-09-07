@@ -27,17 +27,17 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         int y = f.lireNombre();
         // on récupère l'entrée et la sortie
         entree = new Salle(x, y);
-        this.add(entree);
+        addSalle(entree, hauteur, largeur);
         x = f.lireNombre();
         y = f.lireNombre();
         sortie = new Salle(x,y);
-        this.add(sortie);
+        addSalle(sortie, hauteur, largeur);
         x = f.lireNombre();
         y = f.lireNombre();
         // on récuère les autres salles
         while(x != -1){
             Salle s = new Salle(x,y);
-            add(s, hauteur, largeur);
+            addSalle(s, hauteur, largeur);
             x = f.lireNombre();
             y = f.lireNombre();
         }
@@ -45,11 +45,12 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
     }
     
     // Une fonction qui permet de n'ajouter que des slles valides
-    public void add(Salle s, int hauteur , int largeur){
+    public void addSalle(ISalle s, int hauteur , int largeur){
         if ((s.getY()>=0 && s.getY()<hauteur) 
-                && (s.getX()>=0 && x=s.getX()<largeur) && (!this.contains(s))){
+                && (s.getX()>=0 && s.getX()<largeur) && (!this.contains(s))){
             this.add(s);
         }
+        System.out.println("Faux");
     }
 
     @Override

@@ -1,6 +1,6 @@
 module com.iutbx.projetlaby {
     requires javafx.controls;
-    requires junit;
+    //requires junit;
     requires org.jgrapht.core;
     requires java.desktop;
     exports application;

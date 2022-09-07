@@ -13,9 +13,6 @@ import org.junit.Test;
  * @author majansen
  */
 public class SalleTest {
-    
-    public SalleTest() {
-    }
 
     @Test
     public void testGetX() {
