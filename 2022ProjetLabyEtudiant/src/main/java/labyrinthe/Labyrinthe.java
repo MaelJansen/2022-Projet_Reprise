@@ -32,14 +32,24 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         y = f.lireNombre();
         sortie = new Salle(x,y);
         this.add(sortie);
+        x = f.lireNombre();
+        y = f.lireNombre();
         // on récuère les autres salles
         while(x != -1){
+            Salle s = new Salle(x,y);
+            add(s, hauteur, largeur);
             x = f.lireNombre();
             y = f.lireNombre();
-            Salle s = new Salle(x,y);
-            this.add(s);
         }
         // ...
+    }
+    
+    // Une fonction qui permet de n'ajouter que des slles valides
+    public void add(Salle s, int hauteur , int largeur){
+        if ((s.getY()>=0 && s.getY()<hauteur) 
+                && (s.getX()>=0 && x=s.getX()<largeur) && (!this.contains(s))){
+            this.add(s);
+        }
     }
 
     @Override
