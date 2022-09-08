@@ -49,13 +49,21 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         if ((s.getY()>=0 && s.getY()<hauteur) 
                 && (s.getX()>=0 && s.getX()<largeur) && (!this.contains(s))){
             this.add(s);
+            System.out.println("vrai");
+        }else{
+            System.out.println("Faux");
         }
-        System.out.println("Faux");
     }
 
     @Override
     public Collection<ISalle> sallesAccessibles(IPersonnage bob) {
-        return null;
+        ArrayList<ISalle> adjacentes = new ArrayList<>();
+        for (ISalle s : this){
+            if(bob.getPosition().estAdjacente(s)){
+                adjacentes.add(s);
+            }
+        }
+        return adjacentes;
     }
 
     @Override
