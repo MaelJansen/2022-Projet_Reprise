@@ -23,7 +23,7 @@ public class HerosSprite extends ASprite implements EventHandler<KeyEvent>{
     Heros h;
     
     public HerosSprite(Heros perso, ILabyrinthe labyrinthe) {
-        super(perso, labyrinthe);
+        super(perso, labyrinthe,"file:icons/link/LinkRunShieldD1.gif");
         lab =  labyrinthe;
         h = perso;
     }
@@ -43,19 +43,15 @@ public class HerosSprite extends ASprite implements EventHandler<KeyEvent>{
         switch (t.getCode()){
             case LEFT:
                 h.setSalleChoisie(new Salle(perso.getPosition().getX()-1, perso.getPosition().getY()));
-                System.out.println("deplacement en " + h.getSalleChoisie().getX() + "     " + h.getSalleChoisie().getY());
                 break;
             case RIGHT:
                 h.setSalleChoisie(new Salle(perso.getPosition().getX()+1, perso.getPosition().getY()));
-                System.out.println("deplacement en " + h.getSalleChoisie().getX() + "     " + h.getSalleChoisie().getY());
                 break;
             case UP:
                 h.setSalleChoisie(new Salle(perso.getPosition().getX(), perso.getPosition().getY()-1));
-                System.out.println("deplacement en " + h.getSalleChoisie().getX() + "     " + h.getSalleChoisie().getY());
                 break;
             case DOWN:
                 h.setSalleChoisie(new Salle(perso.getPosition().getX(), perso.getPosition().getY()+1));
-                System.out.println("deplacement en " + h.getSalleChoisie().getX() + "     " + h.getSalleChoisie().getY());
                 break;
             default:
                 break;
@@ -68,5 +64,5 @@ public class HerosSprite extends ASprite implements EventHandler<KeyEvent>{
         System.out.println("");
         System.out.println("--------------------------------------------");
         System.out.println("");
-    }  
+    }
 }

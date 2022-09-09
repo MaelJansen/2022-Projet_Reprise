@@ -2,13 +2,16 @@ package application;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Random;
 import labyrinthe.ILabyrinthe;
 import labyrinthe.ISalle;
 import personnages.Heros;
 import personnages.IPersonnage;
+import personnages.Monstres;
 import vue2D.IVue;
 import vue2D.sprites.HerosSprite;
 import vue2D.sprites.ISprite;
+import vue2D.sprites.MonstreSprite;
 
 /**
  *
@@ -17,11 +20,12 @@ import vue2D.sprites.ISprite;
 public class Core {
     ISprite heros;
     ILabyrinthe labyrinthe;
+    ISprite monstres;
 
     protected void initLabyrinthe() {
         // creation du labyrinthe
         labyrinthe = new labyrinthe.Labyrinthe();
-        chargementLaby("labys/level3.txt");
+        chargementLaby(ranLab())/*"labys/level3.txt")*/;
     }
 
     protected void initSprites(IVue vue) {
@@ -29,6 +33,13 @@ public class Core {
         Heros h = new personnages.Heros(labyrinthe.getEntree());
         this.heros = new HerosSprite(h, labyrinthe);
         vue.add(this.heros);
+        // creation des monstres
+        Monstres m;
+        for (int i=0; i<10; i++){
+            m = new personnages.Monstres(labyrinthe.getSortie());
+            this.monstres= new MonstreSprite(m, labyrinthe);
+            vue.add(this.monstres);
+        }
     }
 
     protected void jeu(IVue vue) {
@@ -60,7 +71,7 @@ public class Core {
                 System.out.println("Plus que " + vue.size() + " personnages ...");
             }
 
-            temporisation(50);
+            temporisation(100);
         }
         System.out.println("Gagné!");
     }
@@ -86,5 +97,47 @@ public class Core {
             Thread.sleep(nb); // pause de nb millisecondes
         } catch (InterruptedException ie) {
         };
+    }
+    
+    public String ranLab(){
+        int choix;
+        String labChoisie = "labys/level3.txt";;
+        Random r = new Random();
+        choix = r.nextInt(11);
+        switch (choix){
+            case 1:
+                labChoisie = "labys/level3.txt";
+                break;
+            case 2:
+                labChoisie = "labys/level10.txt";
+                break;
+            case 3:
+                labChoisie = "labys/level11.txt";
+                break;
+            case 4:
+                labChoisie = "labys/level12.txt";
+                break;
+            case 5:
+                break;
+            case 6:
+                labChoisie = "labys/level2.txt";
+                break;
+            case 7:
+                labChoisie = "labys/level6.txt";
+                break;
+            case 8:
+                labChoisie = "labys/level7.txt";
+                break;
+            case 9:
+                labChoisie = "labys/level8.txt";
+                break;
+            case 10:
+                labChoisie = "labys/level9.txt";
+                break;
+            default:
+                break;
+        }
+                
+        return labChoisie;
     }
 }

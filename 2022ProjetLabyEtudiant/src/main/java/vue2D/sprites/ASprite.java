@@ -20,7 +20,7 @@ public abstract class ASprite implements ISprite{
     Image spritePerso;
     int posX;
     int posY;
-
+    
     @Override
     public void dessiner(GraphicsContext g) {
         g.drawImage(spritePerso, posX, posY);
@@ -32,11 +32,11 @@ public abstract class ASprite implements ISprite{
         posY = ypix*15;
     }
     
-    public ASprite(IPersonnage personnage, ILabyrinthe lab){
+    public ASprite(IPersonnage personnage, ILabyrinthe lab, String type){
         this.perso = personnage;
         posX = lab.getEntree().getX();
         posY = lab.getEntree().getY();
-        spritePerso = new Image("file:icons/link/LinkRunShieldD1.gif");
+        spritePerso = new Image(type);
     }
     
     @Override

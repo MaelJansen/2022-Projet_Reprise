@@ -45,13 +45,13 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
     }
     
     // Une fonction qui permet de n'ajouter que des slles valides
-    public void addSalle(ISalle s, int hauteur , int largeur){
+    public boolean addSalle(ISalle s, int hauteur , int largeur){
         if ((s.getY()>=0 && s.getY()<hauteur) 
                 && (s.getX()>=0 && s.getX()<largeur) && (!this.contains(s))){
             this.add(s);
-            System.out.println("vrai");
+            return true;
         }else{
-            System.out.println("Faux");
+            return false;
         }
     }
 

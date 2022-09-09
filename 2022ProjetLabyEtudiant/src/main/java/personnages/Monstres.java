@@ -15,17 +15,26 @@ import labyrinthe.ISalle;
  */
 public class Monstres extends APersonnage{
     
-    Random r = new Random();
+    
     int nbAleatoire;
+    ISalle salleAleatoire;
     
     @Override
     public ISalle faitSonChoix(Collection<ISalle> sallesAccessibles) {
-        ArrayList<ISalle> accessibles = new ArrayList<>();
-        accessibles.addAll(sallesAccessibles);
-        ISalle salleAleatoire;
-        nbAleatoire = r.nextInt(0 - sallesAccessibles.size());
-        salleAleatoire = accessibles.get(nbAleatoire);
+        ArrayList<ISalle> accessibles = (ArrayList) sallesAccessibles;
+        Random r = new Random();
+        salleAleatoire = accessibles.get(r.nextInt(accessibles.size()));
         return salleAleatoire;
+    }
+    
+    public Monstres(ISalle salleDepart){
+        this.setPosition(salleDepart);
+        salleAleatoire = salleDepart;
+    }
+    
+    @Override
+    public ISalle getPosition(){
+        return super.getPosition();
     }
     
 }
