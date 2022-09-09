@@ -52,7 +52,7 @@ public class Dessin extends Canvas {
         int y;
         sol = new Image("file:icons/mur0.gif");
         mur = new Image("file:icons/ground.gif");
-        sortie = new Image("file:incons/sortie.gif");
+        sortie = new Image("file:icons/sortie.gif");
         // on dessine le fond du labyrinthe
         for (int i=0; i<labyrinthe.getLargeur(); i++){
             for (int j=0; j<labyrinthe.getHauteur(); j++){
@@ -68,6 +68,8 @@ public class Dessin extends Canvas {
             y = s.getY();
             tampon.drawImage(mur,x*unite,y*unite,unite,unite);
         }
+        tampon.drawImage(sortie, labyrinthe.getSortie().getX()*unite, labyrinthe.getSortie().getY() * unite,
+                unite, unite);
     }
 
 }

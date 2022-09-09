@@ -56,13 +56,5 @@ public class HerosSprite extends ASprite implements EventHandler<KeyEvent>{
             default:
                 break;
         }
-        System.out.println("position du personnage" + h.getPosition().getX() + "    "  + h.getPosition().getY());
-        System.out.println("");
-        for (ISalle s : lab.sallesAccessibles(h)){
-                    System.out.println("cases adjacentes" + s.getX() + "    " + s.getY());
-        }
-        System.out.println("");
-        System.out.println("--------------------------------------------");
-        System.out.println("");
     }
 }

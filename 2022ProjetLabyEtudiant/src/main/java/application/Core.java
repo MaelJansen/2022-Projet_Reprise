@@ -45,7 +45,8 @@ public class Core {
     protected void jeu(IVue vue) {
         // boucle principale
         ISalle destination = null;
-        while (!labyrinthe.getSortie().equals(heros.getPosition())) {
+        while (!(labyrinthe.getSortie().getX() == heros.getPosition().getX())
+                || !(labyrinthe.getSortie().getY() == heros.getPosition().getY())) {
             // choix et deplacement
             for (IPersonnage p : vue) {
                 Collection<ISalle> sallesAccessibles = labyrinthe.sallesAccessibles(p);
@@ -57,7 +58,8 @@ public class Core {
             ISprite monstre = null;
             for (ISprite p : vue) {
                 if (p != heros) {
-                    if (p.getPosition() == heros.getPosition()) {
+                    if (p.getPosition().getX() == heros.getPosition().getX() 
+                            && p.getPosition().getY() == heros.getPosition().getY()) {
                         System.out.println("Collision !!");
                         collision = true;
                         monstre = p;
@@ -69,6 +71,7 @@ public class Core {
                 vue.remove(heros);
                 System.out.println("Perdu !");
                 System.out.println("Plus que " + vue.size() + " personnages ...");
+                vue.add(heros);
             }
 
             temporisation(100);
@@ -101,9 +104,9 @@ public class Core {
     
     public String ranLab(){
         int choix;
-        String labChoisie = "labys/level3.txt";;
+        String labChoisie = "labys/level3.txt";
         Random r = new Random();
-        choix = r.nextInt(11);
+        choix = r.nextInt(10);
         switch (choix){
             case 1:
                 labChoisie = "labys/level3.txt";
@@ -118,20 +121,18 @@ public class Core {
                 labChoisie = "labys/level12.txt";
                 break;
             case 5:
-                break;
-            case 6:
                 labChoisie = "labys/level2.txt";
                 break;
-            case 7:
+            case 6:
                 labChoisie = "labys/level6.txt";
                 break;
-            case 8:
+            case 7:
                 labChoisie = "labys/level7.txt";
                 break;
-            case 9:
+            case 8:
                 labChoisie = "labys/level8.txt";
                 break;
-            case 10:
+            case 9:
                 labChoisie = "labys/level9.txt";
                 break;
             default:

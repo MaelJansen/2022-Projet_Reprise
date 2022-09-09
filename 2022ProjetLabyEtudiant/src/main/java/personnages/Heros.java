@@ -22,7 +22,6 @@ public class Heros extends APersonnage{
 
     @Override
     public ISalle faitSonChoix(Collection<ISalle> sallesAccessibles) {
-        ISalle salle = null;
         for(ISalle s : sallesAccessibles){
             if(s.getX() == salleChoisie.getX() 
                     && s.getY() ==  salleChoisie.getY()){
