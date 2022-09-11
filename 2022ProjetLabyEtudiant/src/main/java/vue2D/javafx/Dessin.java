@@ -25,6 +25,11 @@ public class Dessin extends Canvas {
     private Image sol;
     private Image sortie;
    
+    /**
+     * Le constructeur de la partie graphique de l'application
+     * @param labyrinthe le labyrinthe qui sera afficher
+     * @param sprites la liste des personnages qui seront affichés
+     */
     public Dessin(ILabyrinthe labyrinthe, Collection<ISprite> sprites)
     {
         this.sprites = sprites;
@@ -37,22 +42,29 @@ public class Dessin extends Canvas {
         dessinLab();
     }
     
-     public void chargementImages(){
+    /**
+     * Une fonction qui permet de definire l'image de fond de l'application
+     */
+    public void chargementImages(){
     	solImage = new Image("file:icons/pyramide.png");
     }
     
+    /**
+     * La fonction qui permet d'afficher le fond de l'application
+     */
     public void dessinFond(){
         tampon.drawImage(solImage,0,0,unite*labyrinthe.getLargeur(),
                 unite*labyrinthe.getHauteur());
     }
     
+    /**
+     * La fonction qui permet de dessiner le labyrinthe
+     */
     public void dessinLab(){
         Salle salle;
         int x;
         int y;
-        sol = new Image("file:icons/mur0.gif");
-        mur = new Image("file:icons/ground.gif");
-        sortie = new Image("file:icons/sortie.gif");
+        choixImages();
         // on dessine le fond du labyrinthe
         for (int i=0; i<labyrinthe.getLargeur(); i++){
             for (int j=0; j<labyrinthe.getHauteur(); j++){
@@ -70,6 +82,15 @@ public class Dessin extends Canvas {
         }
         tampon.drawImage(sortie, labyrinthe.getSortie().getX()*unite, labyrinthe.getSortie().getY() * unite,
                 unite, unite);
+    }
+    
+    /**
+     * Une fonction qui permet de choisir les images pour les salles du labyrinthe
+     */
+    public void choixImages(){
+        sol = new Image("file:icons/mur0.gif");
+        mur = new Image("file:icons/ground.gif");
+        sortie = new Image("file:icons/sortie.gif");
     }
 
 }

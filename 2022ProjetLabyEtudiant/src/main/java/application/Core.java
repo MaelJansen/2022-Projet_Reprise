@@ -22,12 +22,20 @@ public class Core {
     ILabyrinthe labyrinthe;
     ISprite monstres;
 
+    /**
+     * Une fonction qui permet de créer un labyrinthe
+     */
     protected void initLabyrinthe() {
         // creation du labyrinthe
         labyrinthe = new labyrinthe.Labyrinthe();
-        chargementLaby(ranLab())/*"labys/level3.txt")*/;
+        chargementLaby(ranLab());
     }
 
+    /**
+     * Une fonction qui permet de créer tout les personnages contenu dans 
+     * une collection de sprites
+     * @param vue une collection de sprite
+     */
     protected void initSprites(IVue vue) {
         // creation du heros 
         Heros h = new personnages.Heros(labyrinthe.getEntree());
@@ -42,6 +50,11 @@ public class Core {
         }
     }
 
+    /**
+     * Une fonction qui permet de gérer les déplacements des différentes entités
+     * ainsi que leurs collisions
+     * @param vue une collection de sprite
+     */
     protected void jeu(IVue vue) {
         // boucle principale
         ISalle destination = null;
@@ -71,7 +84,6 @@ public class Core {
                 vue.remove(heros);
                 System.out.println("Perdu !");
                 System.out.println("Plus que " + vue.size() + " personnages ...");
-                vue.add(heros);
             }
 
             temporisation(100);
@@ -95,6 +107,10 @@ public class Core {
         }
     }
 
+    /**
+     * Une fonction qui permet de ralentire les actions du code
+     * @param nb
+     */
     protected void temporisation(int nb) {
         try {
             Thread.sleep(nb); // pause de nb millisecondes
@@ -102,6 +118,10 @@ public class Core {
         };
     }
     
+    /**
+     * Une fonction qui permet de charger un labyrinthe aléatoire
+     * @return un fichier contenant les coordonnées d'un labyrinthe
+     */
     public String ranLab(){
         int choix;
         String labChoisie = "labys/level3.txt";

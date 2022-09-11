@@ -15,11 +15,21 @@ public class Heros extends APersonnage{
 
     private ISalle salleChoisie;
 
+    /**
+     * Une fonction qui permet de connaitre la position du hero
+     * @return la position du hero (salle)
+     */
     @Override
     public ISalle getPosition() {
         return super.getPosition();
     }
 
+    /**
+     * Une fonction qui permet de chosir une salle ou allé 
+     * (si elle est accessibles)
+     * @param sallesAccessibles la liste des salles accessibles
+     * @return la salle chosie si elle est accessible et la position sinon
+     */
     @Override
     public ISalle faitSonChoix(Collection<ISalle> sallesAccessibles) {
         for(ISalle s : sallesAccessibles){
@@ -31,15 +41,28 @@ public class Heros extends APersonnage{
         return getPosition();
     }
     
+    /**
+     * Le constructeur pour le hero
+     * @param salleDepart la salle de depart du hero
+     */
     public Heros(ISalle salleDepart){
         this.setPosition(salleDepart);
         salleChoisie =salleDepart;
     }
 
+    /**
+     * Une fonction qui permet de definir al salle choisis pour le deplacement
+     * du hero
+     * @param salleChoisie la salle choisie
+     */
     public void setSalleChoisie(ISalle salleChoisie) {
         this.salleChoisie = salleChoisie;
     }
 
+    /**
+     * une fonction qui permet de connaitre la salle choisie pour le deplacement
+     * @return la salle choisie
+     */
     public ISalle getSalleChoisie() {
         return salleChoisie;
     }

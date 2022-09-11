@@ -17,6 +17,10 @@ public class Vue extends AVue implements IVue{
     ILabyrinthe labyrinthe;
     public Scene scene;
     
+    /**
+     * Le constructeur de la scene
+     * @param labyrinthe
+     */
     public Vue(ILabyrinthe labyrinthe){
         this.labyrinthe=labyrinthe;
         dessin = new Dessin(labyrinthe, this);
@@ -25,6 +29,10 @@ public class Vue extends AVue implements IVue{
         root.getChildren().add(dessin);
     }
     
+    /**
+     * Une fonction qui permet de dessiner le décor complet
+     * (le labyrinthe, le fond et les personnages)
+     */
     @Override
     public void dessiner() {
      	// recopie du fond (image); murs + salles
@@ -35,6 +43,11 @@ public class Vue extends AVue implements IVue{
          }     
     }	
     
+    /**
+     * Une fonction qui permet d'ajouter les personnages
+     * @param sprite la liste des personnages
+     * @return vrai
+     */
     @Override
     public boolean add(ISprite sprite){
         super.add(sprite);

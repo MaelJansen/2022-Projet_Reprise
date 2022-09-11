@@ -16,6 +16,11 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
     private int largeur;
     private int hauteur;
 
+    /**
+     * Une méthode qui créer toutes les salles d'un labyrinthe a partir 
+     * d'un fichier passer en paramètre
+     * @param file le fichier contenant les coordonnées des salles du labyrinthes
+     */
     @Override
     public void creerLabyrinthe(String file) {
         Fichier f = new Fichier(file);
@@ -43,8 +48,15 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         }
         // ...
     }
-    
-    // Une fonction qui permet de n'ajouter que des slles valides
+
+    /**
+     * Une fonction qui permet de controller si les salles sont correctes ou non
+     * (si elles ont des coordonnées positives et pas trop grandes)
+     * @param s
+     * @param hauteur
+     * @param largeur
+     * @return vrai ou faux en fonction de si la salles est correcte ou pas
+     */
     public boolean addSalle(ISalle s, int hauteur , int largeur){
         if ((s.getY()>=0 && s.getY()<hauteur) 
                 && (s.getX()>=0 && s.getX()<largeur) && (!this.contains(s))){
@@ -55,6 +67,12 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         }
     }
 
+    /**
+     * Une fonction qui retourne les salles acccessibles par le personnages
+     * (celles qui lui sont adjacentes)
+     * @param bob le personnage dont on veux connaitre les salles accessibles
+     * @return un collection de salles (accessibles)
+     */
     @Override
     public Collection<ISalle> sallesAccessibles(IPersonnage bob) {
         ArrayList<ISalle> adjacentes = new ArrayList<>();
@@ -66,26 +84,43 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         return adjacentes;
     }
 
+    /**
+     * Une fonction qui renvoie l'entrée du labyrinthe 
+     * @return une salle (l'entrée du labyrinthe)
+     */
     @Override
     public ISalle getEntree() {
         return entree;
     }
 
+    /**
+     * Une fonction qui renvoie la sortie du labyrinthe
+     * @return une salle (la sortie du labyrinthe)
+     */
     @Override
     public ISalle getSortie() {
         return sortie;
     }
-
+    
+    // Une fonction qui n'a pas été encore implementée
     @Override
     public Collection<ISalle> chemin(ISalle u, ISalle v) {
         return null;
     }
 
+    /**
+     * Une fonction qui renvoie la largeur du labyrinthe
+     * @return le nombre de salles sur la largeur du labyrinthe
+     */
     @Override
     public int getLargeur() {
         return largeur;
     }
 
+    /**
+     * Une fonction qui renvoie la longueur du labyrinthe
+     * @return le nombre de salles sur la longueur du labyrinthe
+     */
     @Override
     public int getHauteur() {
         return hauteur;

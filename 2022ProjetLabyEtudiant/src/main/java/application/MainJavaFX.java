@@ -13,6 +13,10 @@ import vue2D.javafx.Vue;
 public class MainJavaFX extends Application {
     private Core core;
 
+    /**
+     * Une fonction qui permet de créer tout les élements et les afficher
+     * @param stage
+     */
     @Override
     public void start(Stage stage) {
         core = new Core();
@@ -47,6 +51,10 @@ public class MainJavaFX extends Application {
        
     }
 
+    /**
+     * Une foncttion qui permet de lancer l'application
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
