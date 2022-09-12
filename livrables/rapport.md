@@ -21,6 +21,10 @@ Rapport :
  - Ajout de la javadoc dans le code
  - Mise en forme du rapport
 
+12/09/2022 :
+ - Ajout du dernier diagramme et passage en PDF 
+ - Dernières mises en forme des livrables du projet et ajout du readme
+
 Problèmes rencontrés : 
 
 Beaucoup de problêmes liés au cache de linux, ainsi que netbeans qui ne pouvait 
