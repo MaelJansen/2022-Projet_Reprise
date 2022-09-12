@@ -1,6 +1,6 @@
 ReadMe :
 
-La liste des objectifs atteints et leurs dates:
+La liste des objectifs atteints :
 
 Objectif 1 atteint le 05/09/2022
 
