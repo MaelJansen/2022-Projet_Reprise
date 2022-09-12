@@ -1,0 +1,187 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>9</zoom_level><element><id>UMLPackage</id><coordinates><x>0</x><y>234</y><w>405</w><h>288</h></coordinates><panel_attributes>application
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>279</y><w>189</w><h>126</h></coordinates><panel_attributes>Core
+--
+
+--
+# initLabyrinthe() : void
+# initSprite(IVue) : void
+# jeu(IVue) : void
+- chargementLaby(String) : void
+# temporisation(int) : void
++ ranLab() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>207</x><y>405</y><w>189</w><h>90</h></coordinates><panel_attributes>MainJavFX
+--
+
+--
+@Override 
++ start(Stage) : void
+_+ main(String[ ]) : void_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>351</y><w>135</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1 core</panel_attributes><additional_attributes>10;10;130;10;130;60</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>540</y><w>612</w><h>486</h></coordinates><panel_attributes>labyrinthe
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>567</y><w>279</w><h>153</h></coordinates><panel_attributes>&lt;&lt;Intreface&gt;&gt;
+ILabyrinthe
+--
+
+--
++ creerLabyrinthe(String) : void
++ sallesAccessibles(IPersonnages) : Collection&lt;ISalle&gt;
++ getEntree() : ISalle
++ getSortie() : ISalle
++ chemin(ISalle, ISalle) : Collection&lt;ISalle&gt;
++ getLargeur() : int
++ getHauteur() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>387</x><y>639</y><w>189</w><h>108</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+ISalle
+--
+
+--
++ getX() : int
++ getY() : int
++ estAdjacente(ISalle) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>756</y><w>279</w><h>261</h></coordinates><panel_attributes>Labyrinthe
+--
+- largeur : int
+- hauteur : int
+--
+@Override
++ creerLabyrinthe(String) : void
++ addSalle(ISalle, int, int) : boolean
+@Override
++ sallesAccessibles(IPesonnage) : Collection&lt;ISalle&gt;
+@Override
++ getEntree() : ISalle
+@Override
++ getSortie() : ISalle
+@Override
++ chemin(ISalle, ISalle) : Collection&lt;ISalle&gt;
+@Override
++ getLargeur() : int
+@Override
++ getHauteur() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>801</y><w>189</w><h>153</h></coordinates><panel_attributes>Salle
+--
+- x : int
+- y : int
+--
+@Override
++ getX() : int
+@Override
++ getY() : int
+@Override
++ estAdjacente(ISalle) : boolean
++ Salle(int, int)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>423</x><y>252</y><w>216</w><h>126</h></coordinates><panel_attributes>outils
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>288</y><w>189</w><h>72</h></coordinates><panel_attributes>Fichier
+--
+sc : Scanner = null
+--
++ Fichier (String)
++ lireNombre() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>1053</y><w>612</w><h>351</h></coordinates><panel_attributes>personnages
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>1080</y><w>189</w><h>117</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+APersonnage
+--
+
+--
+@Override
++ setPosition(ISalle) : void
+@Override
++ getPosition(ISalle) : ISalle</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>1242</y><w>216</w><h>144</h></coordinates><panel_attributes>Heros
+--
+
+--
+@Override
++ getPosition() : ISalle
+@Override
++ faitSonChoix(Collection&lt;Isalle&gt;) : ISalle
++ Heros(Isalle)
++ setSalleChoisie(ISalle) : void
++ getSalleChoisie() : ISalle</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>1080</y><w>216</w><h>99</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPersonnage
+--
+
+--
++ faitSonChoix(Collection&lt;ISalle&gt;) : ISalle
++ getPosition() : ISalle
++ setPosition(ISalle) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>306</x><y>1206</y><w>216</w><h>171</h></coordinates><panel_attributes>Monstres
+--
+nbAleatoire : int
+--
+@Override
++ faitSonChoix(Collection&lt;ISalle&gt;) : ISalle
++ Monstres(ISalle)
+@Override
++ getPosition() : ISalle</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>1422</y><w>612</w><h>864</h></coordinates><panel_attributes>vue2D
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>9</x><y>1449</y><w>423</w><h>234</h></coordinates><panel_attributes>javafx
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>1485</y><w>225</w><h>189</h></coordinates><panel_attributes>Dessin
+--
+- unite : int  = 15
+- tampon : GraphicsContext
+- solImage : Image
+- mur : Image
+- sol : Image
+- sortie : Image
+--
++ Dessin(ILabyrinthe, Collection&lt;ISprite&gt;)
++ chargementImages() : void
++ dessinFond() : void
++ dessonLab() : void
++ choixImages() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>1485</y><w>144</w><h>117</h></coordinates><panel_attributes>Vue
+--
++ scene : Scene
+--
++ Vue(ILabyrinthe)
++ dessiner() : void
+@Override
++ add(ISprite) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>9</x><y>1701</y><w>585</w><h>450</h></coordinates><panel_attributes>sprites
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>27</x><y>1746</y><w>189</w><h>171</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+ASprite
+--
+posX : int
+posY: int
+--
+@Override
++ dessiner(GraphicsContext) : void
+@Override
++ setCoordonnees(int, int) : void
++ ASprite(IPersonnage, ILabyrinthe, String)
+@Override
++ setPosition(ISalle) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>1746</y><w>216</w><h>144</h></coordinates><panel_attributes>Heros
+--
+
+--
++ HerosSprite(Heros, ILabyrinthe)
+@Override
++ faitSonChoix(Collection&lt;ISalle&gt;) : ISalle
+@Override
++ getPosition() : ISalle
+@Override
++ handle(KeyEvent) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>27</x><y>1935</y><w>189</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+ISprite
+--
+
+--
++ dessiner(GraphicsContext) : void
++ setCoordonnees(int, int): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>1908</y><w>216</w><h>117</h></coordinates><panel_attributes>MonstreSprite
+--
+
+--
+@Override
++ faitSonChoix(Collection&lt;ISalle&gt;) : ISalle
+@Override
++ getPosition() : ISalle
++ MonstreSprite(Monsttres, ILabyrinthe)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>36</x><y>2178</y><w>189</w><h>90</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+AVue
+--
+__UNITE : int = 15__
+--
+@Override
++ add(ISprite) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>243</x><y>2178</y><w>189</w><h>81</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+IVue
+--
+
+--
++ dessiner() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>423</y><w>126</w><h>27</h></coordinates><panel_attributes>module_info</panel_attributes><additional_attributes></additional_attributes></element></diagram>
